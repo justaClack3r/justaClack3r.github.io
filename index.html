@@ -16,7 +16,7 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
 </head>
@@ -27,22 +27,27 @@
   <!-- ================= HERO ================= -->
   <section class="hero" aria-labelledby="hero-title">
     <div class="wrap hero-grid">
-      <div class="hero-copy">
+      <div class="hero-copy" id="about">
         <span class="eyebrow">Mechanical design · Robotics · Harvard</span>
         <h1 id="hero-title">Justice <span class="surname">Hickman-Maynard</span></h1>
-        <p class="hero-lede">I design robots end to end: <strong>arms, actuators and original mechanisms</strong>, the structures that carry them, and the control math that drives them.</p>
 
-        <div class="general-notes" role="note">
-          <b>GENERAL NOTES</b>
-          <ol>
-            <li>Every project on this site was designed by me, from first sketch through CAD, analysis, fabrication and test.</li>
-            <li>Where a project was part of a team, its title block states exactly which parts I designed.</li>
-          </ol>
+        <div class="intro">
+          <figure class="portrait">
+            <img src="assets/img/about/portrait-sm.webp" srcset="assets/img/about/portrait-sm.webp 900w, assets/img/about/portrait.webp 1600w" sizes="(max-width: 560px) 40vw, 220px" alt="Portrait of Justice Hickman-Maynard in a gray quarter-zip sweater, smiling, against a plain studio backdrop." fetchpriority="high">
+          </figure>
+          <div class="intro-text">
+            <p>I'm an engineering student at Harvard who designs robots end to end, from mechanisms and actuators to the math that controls them.</p>
+            <p>I'm the chief engineer of the Harvard Undergraduate Robotics Club, a course assistant for ES 51, and I've built hardware for the Harvard Microrobotics Lab and industry.</p>
+          </div>
         </div>
+
+        <ul class="skill-list hero-skills" aria-label="Tools">
+          <li>SolidWorks</li><li>Onshape</li><li>Ansys Mechanical</li><li>MATLAB</li><li>STM32CubeIDE</li><li>C</li><li>CNC &amp; manual machining</li><li>Waterjet</li><li>SLA printing</li><li>Instron</li>
+        </ul>
 
         <div class="hero-cta">
           <a class="btn" href="#work">See the work <span class="arrow"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 3v10M4 9l4 4 4-4"/></svg></span></a>
-          <a class="btn ghost" href="#about">About me</a>
+          <a class="btn ghost" href="#contact">Contact</a>
         </div>
 
         <div class="stats">
@@ -107,7 +112,6 @@
         <div>
           <span class="eyebrow">All projects</span>
           <h2 id="work-title">The work, by discipline</h2>
-          <p>Grouped by the kind of engineering involved. Larger projects take wider cards and longer write-ups. Switch to the timeline to see it chronologically, or filter by skill.</p>
         </div>
       </div>
       <div class="toolbar">
@@ -119,54 +123,6 @@
       </div>
       <div id="work-body" aria-live="polite"></div>
       <noscript><p class="empty-state">The project list needs JavaScript. Start with the <a href="projects/rover-2526.html">2025–26 Mars rover</a>; every project page links to the next.</p></noscript>
-    </div>
-  </section>
-
-  <!-- ================= UPDATES ================= -->
-  <section class="section" id="updates" aria-labelledby="updates-title">
-    <div class="wrap">
-      <div class="section-head">
-        <div>
-          <span class="eyebrow">Lab notebook</span>
-          <h2 id="updates-title">Latest revisions</h2>
-          <p>Projects keep evolving after the write-up. New test results, builds and design changes are logged here and on each project's revision table.</p>
-        </div>
-      </div>
-      <div class="table-scroll">
-        <table class="rev-table">
-          <caption>Revision log: all projects</caption>
-          <thead><tr><th scope="col">Date</th><th scope="col">Project</th><th scope="col">Change</th></tr></thead>
-          <tbody id="updates-body"></tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= ABOUT ================= -->
-  <section class="section" id="about" aria-labelledby="about-title">
-    <div class="wrap about-grid">
-      <figure class="portrait">
-        <img src="assets/img/about/portrait-sm.webp" srcset="assets/img/about/portrait-sm.webp 900w, assets/img/about/portrait.webp 1600w" sizes="(max-width: 860px) 360px, 36vw" alt="Portrait of Justice Hickman-Maynard in a gray quarter-zip sweater, smiling, against a plain studio backdrop." loading="lazy">
-        <figcaption>Justice Hickman-Maynard</figcaption>
-      </figure>
-      <div class="about-text">
-        <span class="eyebrow">About</span>
-        <h2 id="about-title" style="font-size:clamp(1.9rem,3.6vw,2.8rem);letter-spacing:-.03em;margin:10px 0 20px">I like putting the motors somewhere smarter.</h2>
-        <p>I'm <strong>Justice Hickman-Maynard</strong>, an engineering student at Harvard who designs robots and the mechanisms inside them. I'm the <strong>chief engineer of the Harvard Undergraduate Robotics Club</strong>, where I've led the mechanical design of two generations of our Mars rover, and a <strong>course assistant for ES 51</strong>, Harvard's introductory mechanical engineering course.</p>
-        <p>I've also built research hardware for the <strong>Harvard Microrobotics Lab</strong> and spent summer 2026 re-engineering a production research arm so it could be manufactured at scale. I got my start in FRC with Team 125, the NUTRONs.</p>
-        <p>The problems I enjoy most are moving mass away from the end of an arm, designing out backlash, and turning unusual kinematics into hardware that actually runs. I work across the whole loop: concept and kinematics, CAD, analysis, machining and fabrication, then wiring, firmware and test.</p>
-
-        <div class="skills">
-          <div class="skills-group">
-            <h4>Software</h4>
-            <ul class="skill-list"><li>SolidWorks</li><li>SolidWorks Simulation</li><li>Onshape</li><li>Ansys Mechanical</li><li>MATLAB</li><li>STM32CubeIDE</li><li>C</li><li>Arduino</li></ul>
-          </div>
-          <div class="skills-group">
-            <h4>Fabrication &amp; testing</h4>
-            <ul class="skill-list"><li>CNC milling</li><li>CNC turning</li><li>Manual mill</li><li>Manual lathe</li><li>Waterjet</li><li>Markforged Mark Two</li><li>Stratasys</li><li>Instron</li></ul>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 

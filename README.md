@@ -5,12 +5,13 @@ Engineering portfolio of **Justice Hickman-Maynard**, published at <https://just
 A plain static site: HTML, CSS and a little vanilla JavaScript. There is no build step, framework or package install, and GitHub Pages serves the files as they are.
 
 ```
-index.html                 Homepage: hero, featured work, all projects, revisions, about, contact
+index.html                 Homepage: hero, about, featured work, all projects, contact
 projects/<slug>.html       One write-up per project
 projects/_template.html    Copy this to start a new project page
 assets/js/data.js          ★ The single source of truth: project list, categories, updates, contact links
 assets/js/site.js          Renders cards, title blocks, timeline, filters, revisions, lightbox, video
-assets/css/style.css       All styling (light + dark theme tokens at the top)
+assets/css/style.css       All styling (fonts and light + dark theme tokens at the top)
+assets/fonts/              Fallback font for visitors without Century Gothic
 assets/img/<slug>/         Images: name.webp (full) + name-sm.webp (on-page)
 assets/video/              Web-optimized clips + poster frames
 assets/docs/               PDFs (reports, résumé)
@@ -58,7 +59,7 @@ updates: [
 ]
 ```
 
-That's all. The update appears in the project's **Revision history** table (as the next revision letter) and at the top of the homepage's **Latest revisions** log. If the update needs photos or a longer explanation, add a section to the project's HTML page as well, and change `status` (for example `"In development"` → `"Complete"`) when the project is finished.
+That's all. The update appears in the project's **Revision history** table as the next revision letter. If the update needs photos or a longer explanation, add a section to the project's HTML page as well, and change `status` (for example `"In development"` → `"Complete"`) when the project is finished.
 
 ## Adding a new project
 

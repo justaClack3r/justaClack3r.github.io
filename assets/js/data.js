@@ -213,7 +213,7 @@ window.PORTFOLIO = {
       season: "Summer 2026", sort: "2026-08",
       own: "solo", role: "Enclosure design & attachment testing",
       team: "Harvard Microrobotics Lab",
-      tools: "SolidWorks · 3D printing · Instron testing",
+      tools: "SolidWorks · SLA printing · Instron testing",
       status: "Ongoing",
       cover: "assets/img/pangolin-tag/versions-sm.webp",
       tags: ["Biologging", "Waterproofing", "Adhesion testing", "Instron"],

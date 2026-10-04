@@ -1,0 +1,6 @@
+TeX Gyre Adventor (texgyreadventor-*.woff2)
+Copyright 2007-2012 B. Jackowski, J. M. Nowacki and P. Strzelczyk (GUST e-foundry).
+Distributed under the GUST Font License: https://www.gust.org.pl/projects/e-foundry/licenses
+Converted from the original OTF files to WOFF2 without modification of the glyphs.
+
+Used on this site only as a fallback for visitors who don't have Century Gothic installed.

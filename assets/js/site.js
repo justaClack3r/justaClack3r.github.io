@@ -65,7 +65,6 @@
         </a>
         <nav class="nav" aria-label="Primary">
           <a href="${h("#work")}">Work</a>
-          <a href="${h("#updates")}" class="nav-optional">Updates</a>
           <a href="${h("#about")}">About</a>
           <a href="${h("#contact")}">Contact</a>
           <button class="theme-toggle" type="button"></button>
