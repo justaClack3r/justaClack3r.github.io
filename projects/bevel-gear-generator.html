@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Parametric Spiral Bevel Gear Generator · Justice Hickman-Maynard</title>
+  <meta name="description" content="A single SolidWorks part file that generates a meshing spiral bevel gear and pinion from four main inputs: tooth count, pitch, pressure angle and spiral angle.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Parametric Spiral Bevel Gear Generator">
+  <meta property="og:description" content="A single SolidWorks part file that generates a meshing spiral bevel gear and pinion from four main inputs: tooth count, pitch, pressure angle and spiral angle.">
+  <meta property="og:image" content="https://justaclack3r.github.io/assets/img/bevel-gear-generator/render.webp">
+  <meta property="og:url" content="https://justaclack3r.github.io/projects/bevel-gear-generator.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+</head>
+<body data-page="project" data-root="../" data-slug="bevel-gear-generator">
+
+<main id="main">
+  <div class="wrap proj-top">
+    <nav class="crumbs" data-crumbs aria-label="Breadcrumb"></nav>
+    <h1 class="proj-title">Parametric Spiral Bevel Gear Generator</h1>
+    <p class="proj-sub">A single SolidWorks part file that generates a meshing spiral bevel gear and pinion from four main inputs: tooth count, pitch, pressure angle and spiral angle.</p>
+    <div data-titleblock></div>
+
+    <figure class="proj-hero "><img src="../assets/img/bevel-gear-generator/render-sm.webp" srcset="../assets/img/bevel-gear-generator/render-sm.webp 900w, ../assets/img/bevel-gear-generator/render.webp 2000w" sizes="(max-width: 1240px) 100vw, 1160px" width="900" height="720" alt="Render of a metallic spiral bevel gear pair." fetchpriority="high" decoding="async"></figure>
+    <div class="keystats"><div class="keystat"><b>4</b><span>Main driving parameters</span></div><div class="keystat"><b>3</b><span>Involute sections per flank</span></div><div class="keystat"><b>1</b><span>Part file, two gears</span></div><div class="keystat"><b>Printed</b><span>Mesh verified</span></div></div>
+    <div class="proj-layout">
+      <aside class="toc" data-toc aria-label="On this page"></aside>
+      <article class="prose">
+<!-- ===== WRITE-UP START ===== -->
+
+<h2 id="why">Why build a generator</h2>
+<p>Bevel gears turn up all over my mechanisms: the <a href="wrist-3dof.html">coaxial-swerve wrist</a>, differentials and right-angle drives. Off-the-shelf models come in fixed sizes, and spiral bevel geometry is hard to construct by hand. So I built a single part file that generates the gear pair from parameters, accurately enough that the two gears really mesh.</p>
+
+<h2 id="how">How it works</h2>
+<p>Everything is driven from the SolidWorks equations manager. The inputs are gear and pinion tooth counts, diametral pitch, pressure angle and spiral angle, plus shaft angle, face width, clearance, addendum modification and backlash. Pitch diameters, cone angles, addendum and dedendum angles, base diameters and the virtual (back-cone) dimensions are all derived from those.</p>
+<figure class="fig frame"><img src="../assets/img/bevel-gear-generator/equations-sm.webp" srcset="../assets/img/bevel-gear-generator/equations-sm.webp 900w, ../assets/img/bevel-gear-generator/equations.webp 2000w" sizes="(max-width: 820px) 100vw, 760px" width="900" height="414" alt="SolidWorks equations dialog listing gear parameters beside a spiral bevel gear pair." loading="lazy" decoding="async"><figcaption>The equation table that drives the model.</figcaption></figure>
+<h3>Tredgold's approximation</h3>
+<p>A true bevel tooth profile lies on a sphere, which is awkward to construct. <strong>Tredgold's approximation</strong> develops the tooth on the <em>back cone</em> instead, the cone tangent to the pitch sphere at the pitch circle. Unrolled flat, the back cone becomes an equivalent spur gear, and a standard involute profile can be drawn on it.</p>
+<div class="eq">r<sub>v</sub> = r / cos δ &emsp; N<sub>v</sub> = N / cos δ &emsp; tan δ<sub>p</sub> = N<sub>p</sub> / N<sub>g</sub> &nbsp;(Σ = 90°)
+  <span class="eq-note">r<sub>v</sub>, N<sub>v</sub>: virtual (back-cone) radius and tooth count; δ: pitch-cone angle; Σ: shaft angle.</span></div>
+<h3>Making it spiral</h3>
+<p>On a spiral bevel the tooth curves across the face. The generator draws the Tredgold involute at <strong>three stations along the face width</strong>, each rotated to the angle where the spiral passes through that station. A <strong>loft through the three involute curves</strong> gives a tooth flank surface that tracks the spiral. Those surfaces, together with others built from 3D-sketch splines and equations, are then combined into the pinion and gear tooth solids. Keeping every curve equation-driven is what keeps the pair geometrically consistent, so it meshes no matter which parameters change.</p>
+<div class="gallery c2 "><figure class="fig"><img src="../assets/img/bevel-gear-generator/cad-pair-sm.webp" width="900" height="670" alt="CAD view of a large spiral bevel ring gear meshing with a small pinion." loading="lazy" decoding="async"><figcaption>Generated pair: large spiral ring gear with its pinion.</figcaption></figure><figure class="fig"><img src="../assets/img/bevel-gear-generator/cad-spiral-sm.webp" width="884" height="742" alt="CAD view of a spiral bevel pair with strongly curved teeth." loading="lazy" decoding="async"><figcaption>A different parameter set: more spiral, different ratio.</figcaption></figure></div>
+
+<h2 id="verification">Verification</h2>
+<p>The real test of the geometry is whether the gears mesh. I 3D-printed a generated pair and ran them together.</p>
+<figure class="fig narrow-c"><img src="../assets/img/bevel-gear-generator/printed-sm.webp" srcset="../assets/img/bevel-gear-generator/printed-sm.webp 900w, ../assets/img/bevel-gear-generator/printed.webp 2000w" sizes="(max-width: 820px) 100vw, 760px" width="675" height="900" alt="Two black 3D-printed spiral bevel gears meshing on a desk next to a filament spool." loading="lazy" decoding="async"><figcaption>A generated spiral bevel pair, 3D printed and meshing.</figcaption></figure>
+
+<!-- ===== WRITE-UP END ===== -->
+        <section class="proj-revisions" data-revisions aria-label="Revision history"></section>
+      </article>
+    </div>
+
+    <section class="related-wrap" aria-labelledby="related-title">
+      <h2 id="related-title" class="related-title">More in this category</h2>
+      <div class="related" data-related></div>
+    </section>
+    <nav data-pn aria-label="Previous and next project"></nav>
+  </div>
+</main>
+
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/site.js"></script>
+</body>
+</html>

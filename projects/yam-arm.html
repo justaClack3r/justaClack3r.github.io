@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Re-engineering the i2rt YAM Arm · Justice Hickman-Maynard</title>
+  <meta name="description" content="Reverse-engineering the i2rt YAM research arm part by part in SolidWorks to stand up an independent supply chain.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Re-engineering the i2rt YAM Arm">
+  <meta property="og:description" content="Reverse-engineering the i2rt YAM research arm part by part in SolidWorks to stand up an independent supply chain.">
+  <meta property="og:image" content="https://justaclack3r.github.io/assets/img/yam-arm/render-rebuilt.webp">
+  <meta property="og:url" content="https://justaclack3r.github.io/projects/yam-arm.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+</head>
+<body data-page="project" data-root="../" data-slug="yam-arm">
+
+<main id="main">
+  <div class="wrap proj-top">
+    <nav class="crumbs" data-crumbs aria-label="Breadcrumb"></nav>
+    <h1 class="proj-title">Re-engineering the i2rt YAM Arm</h1>
+    <p class="proj-sub">The YAM is a low-cost research arm used widely to collect data for robot-learning models. My task was to reverse-engineer the whole arm, model every part in SolidWorks, and organize an independent supply chain to manufacture it at scale.</p>
+    <div data-titleblock></div>
+
+    <figure class="proj-hero "><img src="../assets/img/yam-arm/render-rebuilt-sm.webp" srcset="../assets/img/yam-arm/render-rebuilt-sm.webp 900w, ../assets/img/yam-arm/render-rebuilt.webp 2000w" sizes="(max-width: 1240px) 100vw, 1160px" width="900" height="720" alt="Render of the fully re-modeled arm in a gray-and-black colorway." fetchpriority="high" decoding="async"></figure>
+    <div class="keystats"><div class="keystat"><b>6 + 1</b><span>Joints + gripper</span></div><div class="keystat"><b>Every part</b><span>Re-modeled in SolidWorks</span></div><div class="keystat"><b>~$3k</b><span>Price of the original arm</span></div><div class="keystat"><b>At scale</b><span>Supply-chain goal</span></div></div>
+    <div class="proj-layout">
+      <aside class="toc" data-toc aria-label="On this page"></aside>
+      <article class="prose">
+<!-- ===== WRITE-UP START ===== -->
+
+<h2 id="why">Why rebuild an arm that already exists?</h2>
+<p>i2rt's <strong>YAM</strong> is a 6-DoF arm with a parallel gripper that sells for about $3,000. It ships with an MIT-licensed Python SDK, simulation models and leader-follower teleoperation support. That combination has made it a common platform for collecting robot demonstrations and deploying <strong>vision-language-action (VLA)</strong> models. Training those models, though, takes <em>fleets</em> of arms, and i2rt's supply chain couldn't deliver them in that volume.</p>
+<p>The answer was an independent supply chain, which starts with a complete, manufacturable model of the arm. I was tasked with all of it: <strong>reverse-engineering the arm, designing each of its parts in SolidWorks, and organizing the supply chain to build it at scale.</strong></p>
+
+<h2 id="process">Process</h2>
+<ol>
+  <li><strong>Teardown and measurement.</strong> Disassembling each subassembly and capturing the geometry of every part.</li>
+  <li><strong>Part-by-part modeling.</strong> Rebuilding each part in SolidWorks as a clean, editable model rather than a dumb scan.</li>
+  <li><strong>Assembly verification.</strong> Reassembling the gripper, wrist, elbow and links in CAD and checking them against the physical hardware.</li>
+  <li><strong>Manufacturing and sourcing.</strong> Matching each part to a process and organizing vendors so the arm can be produced in volume.</li>
+</ol>
+<figure class="fig narrow-c"><img src="../assets/img/yam-arm/gripper-vs-cad-sm.webp" srcset="../assets/img/yam-arm/gripper-vs-cad-sm.webp 900w, ../assets/img/yam-arm/gripper-vs-cad.webp 2000w" sizes="(max-width: 820px) 100vw, 760px" width="675" height="900" alt="A hand holding the real black gripper in front of a monitor displaying the same gripper in CAD." loading="lazy" decoding="async"><figcaption>Checking the physical gripper against my CAD model on screen.</figcaption></figure>
+<div class="gallery c3 "><figure class="fig"><img src="../assets/img/yam-arm/cad-gripper-sm.webp" width="900" height="755" alt="SolidWorks screenshot of the parallel gripper with two triangular fingers." loading="lazy" decoding="async"><figcaption>Gripper assembly.</figcaption></figure><figure class="fig"><img src="../assets/img/yam-arm/cad-wrist-sm.webp" width="900" height="649" alt="SolidWorks screenshot of the wrist: two cylindrical actuators on an L-shaped bracket." loading="lazy" decoding="async"><figcaption>Wrist assembly with its two actuators.</figcaption></figure><figure class="fig"><img src="../assets/img/yam-arm/cad-elbow-sm.webp" width="900" height="619" alt="SolidWorks screenshot of the elbow joint with a teal link cover." loading="lazy" decoding="async"><figcaption>Elbow and upper link with its shell.</figcaption></figure></div>
+<figure class="fig "><img src="../assets/img/yam-arm/cad-full-sm.webp" srcset="../assets/img/yam-arm/cad-full-sm.webp 900w, ../assets/img/yam-arm/cad-full.webp 2000w" sizes="(max-width: 820px) 100vw, 760px" width="900" height="520" alt="SolidWorks screenshot of the full arm folded on its base, with teal link covers." loading="lazy" decoding="async"><figcaption>The complete re-modeled arm in SolidWorks.</figcaption></figure>
+
+<h2 id="renders">Renders</h2>
+<div class="gallery c2 "><figure class="fig"><img src="../assets/img/yam-arm/render-yam-sm.webp" width="900" height="720" alt="Render of the full arm with teal link covers on a white background." loading="lazy" decoding="async"><figcaption>The re-modeled arm with teal link covers.</figcaption></figure><figure class="fig"><img src="../assets/img/yam-arm/render-gripper-sm.webp" width="900" height="720" alt="Render of the black parallel gripper." loading="lazy" decoding="async"><figcaption>Gripper.</figcaption></figure><figure class="fig"><img src="../assets/img/yam-arm/render-wrist-sm.webp" width="900" height="720" alt="Render of the wrist with two cylindrical actuators." loading="lazy" decoding="async"><figcaption>Wrist.</figcaption></figure><figure class="fig"><img src="../assets/img/yam-arm/render-elbow-sm.webp" width="900" height="720" alt="Render of the elbow with a teal link cover." loading="lazy" decoding="async"><figcaption>Elbow and link.</figcaption></figure></div>
+
+<!-- ===== WRITE-UP END ===== -->
+        <section class="proj-revisions" data-revisions aria-label="Revision history"></section>
+      </article>
+    </div>
+
+    <section class="related-wrap" aria-labelledby="related-title">
+      <h2 id="related-title" class="related-title">More in this category</h2>
+      <div class="related" data-related></div>
+    </section>
+    <nav data-pn aria-label="Previous and next project"></nav>
+  </div>
+</main>
+
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/site.js"></script>
+</body>
+</html>

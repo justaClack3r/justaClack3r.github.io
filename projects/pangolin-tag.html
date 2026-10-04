@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pangolin GPS Tag Enclosures · Justice Hickman-Maynard</title>
+  <meta name="description" content="At the Harvard Microrobotics Lab I designed several generations of enclosures for a GPS, IMU and altitude tracking tag for black-bellied and white-bellied pangolins, and tested how well they stay attached on an Instron.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Pangolin GPS Tag Enclosures">
+  <meta property="og:description" content="At the Harvard Microrobotics Lab I designed several generations of enclosures for a GPS, IMU and altitude tracking tag for black-bellied and white-bellied pangolins, and tested how well they stay attached on an Instron.">
+  <meta property="og:image" content="https://justaclack3r.github.io/assets/img/pangolin-tag/versions.webp">
+  <meta property="og:url" content="https://justaclack3r.github.io/projects/pangolin-tag.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+</head>
+<body data-page="project" data-root="../" data-slug="pangolin-tag">
+
+<main id="main">
+  <div class="wrap proj-top">
+    <nav class="crumbs" data-crumbs aria-label="Breadcrumb"></nav>
+    <h1 class="proj-title">Pangolin GPS Tag Enclosures</h1>
+    <p class="proj-sub">At the Harvard Microrobotics Lab I designed several generations of enclosures for a GPS, IMU and altitude tracking tag for black-bellied and white-bellied pangolins, and tested how well they stay attached on an Instron.</p>
+    <div data-titleblock></div>
+
+    <figure class="proj-hero hero-pair"><div class="hp "><img src="../assets/img/pangolin-tag/versions-sm.webp" srcset="../assets/img/pangolin-tag/versions-sm.webp 900w, ../assets/img/pangolin-tag/versions.webp 2000w" sizes="(max-width: 1240px) 50vw, 580px" width="675" height="900" alt="Two generations of the GPS tag enclosure side by side: a black ribbed shell and a tan textured shell." fetchpriority="high" decoding="async"></div><div class="hp contain"><img src="../assets/img/pangolin-tag/cad-pcb-sm.webp" srcset="../assets/img/pangolin-tag/cad-pcb-sm.webp 900w, ../assets/img/pangolin-tag/cad-pcb.webp 2000w" sizes="(max-width: 1240px) 50vw, 580px" width="900" height="481" alt="CAD of the tag PCB inside a transparent enclosure." fetchpriority="high" decoding="async"></div></figure>
+    <div class="keystats"><div class="keystat"><b>GPS · IMU · Alt</b><span>Sensors to protect</span></div><div class="keystat"><b>≤ 3%</b><span>Of body mass: tag guideline</span></div><div class="keystat"><b>~138 N</b><span>Peak pull force, sample 1</span></div><div class="keystat"><b>Multiple</b><span>Enclosure generations</span></div></div>
+    <div class="proj-layout">
+      <aside class="toc" data-toc aria-label="On this page"></aside>
+      <article class="prose">
+<!-- ===== WRITE-UP START ===== -->
+
+<h2 id="animals">The animals</h2>
+<p>The <strong>black-bellied pangolin</strong> (<em>Phataginus tetradactyla</em>) and the <strong>white-bellied pangolin</strong> (<em>Phataginus tricuspis</em>) are small, tree-climbing pangolins from the forests of West and Central Africa. Adults weigh only about 1–3 kg. The IUCN lists them as Vulnerable and Endangered respectively, largely because of hunting and trafficking. They are also notoriously hard to study: shy, often nocturnal, and spending much of their time in dense canopy.</p>
+<p>Tracking them is hard. A recent telemetry study of white-bellied pangolins (<a href="https://www.cambridge.org/core/product/D22261B6D4B77ED9590469AAF59634C5/core-reader" rel="noopener">Emogor et al., <em>Oryx</em></a>) got very little usable movement data from long field campaigns, because of short battery life, dense canopy and tags that were hard to recover. The authors recommend tags of no more than <strong>3% of body mass</strong>, which is only tens of grams for these species.</p>
+
+<h2 id="constraints">Design constraints</h2>
+<p>The tag's PCB carries GPS, an IMU and an altitude sensor, so together they record where the animal goes, how it moves and how high it climbs. The enclosure has to satisfy requirements that pull against each other:</p>
+<ul>
+  <li><strong>Small and light</strong>, so the tag doesn't change how the animal moves or climbs.</li>
+  <li><strong>Waterproof</strong> around delicate electronics, in a rainforest, on an animal that climbs and pushes through vegetation.</li>
+  <li><strong>Room for the PCB, battery and GPS antenna</strong> in a low profile with nothing to snag.</li>
+  <li><strong>A reliable attachment.</strong> Pangolins' tapered heads and short necks rule out collars, so tags have to be mounted to the scales. The attachment method was one of the main things we experimented with.</li>
+</ul>
+
+<h2 id="iterations">Enclosure iterations</h2>
+<p>I designed multiple enclosure versions, trading internal volume, wall thickness, sealing and outer shape against each other, and testing different shells and mounting features from one version to the next.</p>
+<div class="gallery c3 tall"><figure class="fig"><img src="../assets/img/pangolin-tag/halves-sm.webp" width="675" height="900" alt="Two tan 3D-printed enclosure halves on a wooden table." loading="lazy" decoding="async"><figcaption>Printed enclosure halves: PCB pocket, perimeter lip and screw bosses.</figcaption></figure><figure class="fig"><img src="../assets/img/pangolin-tag/assembled-gps-sm.webp" width="675" height="900" alt="A tan enclosure with a dimpled texture next to a square GPS patch antenna." loading="lazy" decoding="async"><figcaption>A textured-shell version assembled, with its GPS patch antenna.</figcaption></figure><figure class="fig"><img src="../assets/img/pangolin-tag/enclosure-black-sm.webp" width="675" height="900" alt="A black ribbed enclosure resting on a table edge." loading="lazy" decoding="async"><figcaption>A later black version with a ribbed shell and side mounting tab.</figcaption></figure></div>
+<div class="gallery c2 "><figure class="fig"><img src="../assets/img/pangolin-tag/cad-enclosure-sm.webp" width="900" height="633" alt="Gray CAD model of a domed enclosure with openings on top." loading="lazy" decoding="async"><figcaption>Enclosure CAD with cutouts for connectors and mounting.</figcaption></figure><figure class="fig"><img src="../assets/img/pangolin-tag/pcb-inside-sm.webp" width="675" height="900" alt="Open black enclosure holding a green PCB and a cylindrical battery." loading="lazy" decoding="async"><figcaption>Tag electronics (PCB and battery) seated in an enclosure.</figcaption></figure></div>
+
+<h2 id="testing">Attachment testing</h2>
+<p>The attachment had to be tested at the tag's real scale, not just on coupons. I designed fixtures that hold an enclosure in an Instron universal testing machine and <strong>pull the bonded interface to failure</strong>.</p>
+<div class="gallery c4 tall"><figure class="fig"><img src="../assets/img/pangolin-tag/fixture-sm.webp" width="675" height="900" alt="A white 3D-printed fixture holding a sample on a lab bench." loading="lazy" decoding="async"><figcaption>Printed test fixture with an enclosure sample.</figcaption></figure><figure class="fig"><img src="../assets/img/pangolin-tag/fixture-2-sm.webp" width="675" height="900" alt="Side view of the white printed fixture with a sample on top." loading="lazy" decoding="async"><figcaption>Fixture side view.</figcaption></figure><figure class="fig"><img src="../assets/img/pangolin-tag/instron-sm.webp" width="675" height="900" alt="An Instron testing machine with a white sample clamped between its grips." loading="lazy" decoding="async"><figcaption>Sample loaded in the Instron grips.</figcaption></figure><figure class="fig"><img src="../assets/img/pangolin-tag/instron-2-sm.webp" width="675" height="900" alt="Close view of the Instron load cell and grips holding the sample." loading="lazy" decoding="async"><figcaption>Pull test in progress.</figcaption></figure></div>
+<figure class="fig frame"><img src="../assets/img/pangolin-tag/yield-graph-sm.webp" srcset="../assets/img/pangolin-tag/yield-graph-sm.webp 900w, ../assets/img/pangolin-tag/yield-graph.webp 2000w" sizes="(max-width: 820px) 100vw, 760px" width="900" height="532" alt="Line chart titled PT Sample 1 Yield, rising to about 90 newtons, dipping, then peaking near 138 newtons before falling." loading="lazy" decoding="async"><figcaption>Force vs. displacement for sample 1: a first peak near 90 N, then a maximum of about 138 N at roughly 1.4 mm.</figcaption></figure>
+<p>Sample 1 held a peak of about <strong>138 N</strong>, roughly 14 kgf. That is hundreds of times the weight of a tag in the tens of grams, which leaves margin for the far larger snag and impact loads a climbing animal can apply. The tests gave us real numbers for comparing attachment approaches.</p>
+<p>Related: the <a href="pangolin-camera-tag.html">pangolin camera tag</a>, an earlier prototype aimed at getting visual data from the same animals.</p>
+
+<!-- ===== WRITE-UP END ===== -->
+        <section class="proj-revisions" data-revisions aria-label="Revision history"></section>
+      </article>
+    </div>
+
+    <section class="related-wrap" aria-labelledby="related-title">
+      <h2 id="related-title" class="related-title">More in this category</h2>
+      <div class="related" data-related></div>
+    </section>
+    <nav data-pn aria-label="Previous and next project"></nav>
+  </div>
+</main>
+
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/site.js"></script>
+</body>
+</html>

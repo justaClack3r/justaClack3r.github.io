@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pangolin Camera Tag · Justice Hickman-Maynard</title>
+  <meta name="description" content="A prototype animal-borne camera for capturing intermittent images of rare, endangered pangolins at low power. I designed the small Arducam enclosure and wrote STM32 firmware to validate timed capture.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Pangolin Camera Tag">
+  <meta property="og:description" content="A prototype animal-borne camera for capturing intermittent images of rare, endangered pangolins at low power. I designed the small Arducam enclosure and wrote STM32 firmware to validate timed capture.">
+  <meta property="og:image" content="https://justaclack3r.github.io/assets/img/pangolin-camera-tag/on-model.webp">
+  <meta property="og:url" content="https://justaclack3r.github.io/projects/pangolin-camera-tag.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+</head>
+<body data-page="project" data-root="../" data-slug="pangolin-camera-tag">
+
+<main id="main">
+  <div class="wrap proj-top">
+    <nav class="crumbs" data-crumbs aria-label="Breadcrumb"></nav>
+    <h1 class="proj-title">Pangolin Camera Tag</h1>
+    <p class="proj-sub">A prototype animal-borne camera for capturing intermittent images of rare, endangered pangolins at low power. I designed the small Arducam enclosure and wrote STM32 firmware to validate timed capture.</p>
+    <div data-titleblock></div>
+
+    <figure class="proj-hero hero-pair"><div class="hp "><img src="../assets/img/pangolin-camera-tag/on-model-sm.webp" srcset="../assets/img/pangolin-camera-tag/on-model-sm.webp 900w, ../assets/img/pangolin-camera-tag/on-model.webp 2000w" sizes="(max-width: 1240px) 50vw, 580px" width="675" height="900" alt="Camera enclosure on a 3D-printed pangolin model." fetchpriority="high" decoding="async"></div><div class="hp "><img src="../assets/img/pangolin-camera-tag/arducam-nucleo-sm.webp" srcset="../assets/img/pangolin-camera-tag/arducam-nucleo-sm.webp 900w, ../assets/img/pangolin-camera-tag/arducam-nucleo.webp 2000w" sizes="(max-width: 1240px) 50vw, 580px" width="675" height="900" alt="Arducam module wired to an STM32 Nucleo board." fetchpriority="high" decoding="async"></div></figure>
+    <div class="keystats"><div class="keystat"><b>Intermittent</b><span>Low-power imaging</span></div><div class="keystat"><b>1600×1200</b><span>JPEG capture</span></div><div class="keystat"><b>5 s</b><span>Test capture interval</span></div><div class="keystat"><b>SPI · I²C · UART</b><span>Firmware interfaces</span></div></div>
+    <div class="proj-layout">
+      <aside class="toc" data-toc aria-label="On this page"></aside>
+      <article class="prose">
+<!-- ===== WRITE-UP START ===== -->
+
+<h2 id="goal">Goal</h2>
+<p>GPS shows where a pangolin went; a camera can show what it was doing there. The goal was an animal-borne tag that captures <strong>intermittent images at low power</strong>, giving researchers visual data on rare, endangered animals that are almost never observed directly. The hardware is a small enclosure housing an Arducam camera module, and I designed several versions of that enclosure.</p>
+<figure class="fig "><img src="../assets/img/pangolin-camera-tag/render-lineup-sm.webp" srcset="../assets/img/pangolin-camera-tag/render-lineup-sm.webp 900w, ../assets/img/pangolin-camera-tag/render-lineup.webp 2000w" sizes="(max-width: 820px) 100vw, 760px" width="900" height="383" alt="Render of several blue and black camera enclosures with lens openings, arranged in a row from a large plate-mounted version to small boxes." loading="lazy" decoding="async"><figcaption>Rendered lineup of camera-tag enclosure versions.</figcaption></figure>
+<figure class="fig narrow-c"><img src="../assets/img/pangolin-camera-tag/on-model-sm.webp" srcset="../assets/img/pangolin-camera-tag/on-model-sm.webp 900w, ../assets/img/pangolin-camera-tag/on-model.webp 2000w" sizes="(max-width: 820px) 100vw, 760px" width="675" height="900" alt="An orange 3D-printed pangolin model wearing a small black camera enclosure on a gray strap." loading="lazy" decoding="async"><figcaption>A camera enclosure strapped to a 3D-printed pangolin model.</figcaption></figure>
+
+<h2 id="firmware">Firmware</h2>
+<p>To validate the camera I wrote firmware in C (STM32 HAL) for an STM32L476RG, an ultra-low-power microcontroller, on a Nucleo board connected to an Arducam module built around the OV2640 2-megapixel sensor:</p>
+<ol>
+  <li><strong>Bring-up checks.</strong> An SPI register test verifies the Arducam link and an I²C bus scan confirms the sensor responds. Status is reported over UART.</li>
+  <li><strong>Sensor configuration over I²C (SCCB).</strong> Reset the OV2640, then load register tables for JPEG output at 1600×1200.</li>
+  <li><strong>Capture over SPI.</strong> Flush the Arducam's frame FIFO, trigger a capture, poll for the capture-done flag, then read the 24-bit image length.</li>
+  <li><strong>Burst read and stream.</strong> Burst-read the JPEG out of the FIFO and stream it to a PC over UART at 921,600 baud for checking.</li>
+  <li><strong>Repeat on a timer.</strong> Wait 5 s and take the next picture.</li>
+</ol>
+<p>The capture loop, lightly condensed:</p>
+<pre class="code" aria-label="Firmware excerpt"><span class="k">while</span> (1) {
+    Arducam_WriteReg(ARDUCHIP_FIFO, FIFO_CLEAR_MASK);   <span class="c">// flush frame FIFO</span>
+    Arducam_WriteReg(ARDUCHIP_FIFO, FIFO_START_MASK);   <span class="c">// trigger capture</span>
+    <span class="k">while</span> (!(Arducam_ReadReg(ARDUCHIP_TRIG) &amp; CAP_DONE_MASK))
+        <span class="f">HAL_Delay</span>(10);                                  <span class="c">// wait for frame</span>
+
+    uint32_t length = (Arducam_ReadReg(ARDUCHIP_FIFO_CODE2) &lt;&lt; 16)
+                    | (Arducam_ReadReg(ARDUCHIP_FIFO_CODE1) &lt;&lt; 8)
+                    |  Arducam_ReadReg(ARDUCHIP_FIFO_CODE0); <span class="c">// 24-bit JPEG size</span>
+
+    CS_LOW();
+    uint8_t cmd = BURST_FIFO_READ;
+    <span class="f">HAL_SPI_Transmit</span>(&amp;hspi1, &amp;cmd, 1, 100);             <span class="c">// burst-read the JPEG</span>
+    <span class="k">for</span> (uint32_t i = 0; i &lt; length; i++) {
+        uint8_t b;
+        <span class="f">HAL_SPI_Receive</span>(&amp;hspi1, &amp;b, 1, 100);
+        <span class="f">HAL_UART_Transmit</span>(&amp;huart2, &amp;b, 1, 100);         <span class="c">// stream to PC @ 921600 baud</span>
+    }
+    CS_HIGH();
+
+    <span class="f">HAL_Delay</span>(5000);                                    <span class="c">// next picture in 5 s</span>
+}</pre>
+<figure class="fig narrow-c"><img src="../assets/img/pangolin-camera-tag/arducam-nucleo-sm.webp" srcset="../assets/img/pangolin-camera-tag/arducam-nucleo-sm.webp 900w, ../assets/img/pangolin-camera-tag/arducam-nucleo.webp 2000w" sizes="(max-width: 820px) 100vw, 760px" width="675" height="900" alt="A hand holding a small camera module wired to an STM32 Nucleo development board." loading="lazy" decoding="async"><figcaption>Bench setup: the Arducam OV2640 module wired to the STM32 Nucleo-L476RG.</figcaption></figure>
+
+<h2 id="next">From bench to field</h2>
+<p>The bench firmware streams every frame to a PC so capture can be verified. A field tag would store images on board and keep the microcontroller in a low-power state between captures, which is exactly what the STM32L4 family is built for. This prototype fed into the lab's later <a href="pangolin-tag.html">GPS tag enclosure work</a>.</p>
+
+<!-- ===== WRITE-UP END ===== -->
+        <section class="proj-revisions" data-revisions aria-label="Revision history"></section>
+      </article>
+    </div>
+
+    <section class="related-wrap" aria-labelledby="related-title">
+      <h2 id="related-title" class="related-title">More in this category</h2>
+      <div class="related" data-related></div>
+    </section>
+    <nav data-pn aria-label="Previous and next project"></nav>
+  </div>
+</main>
+
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rack-and-Pinion Parallel Gripper · Justice Hickman-Maynard</title>
+  <meta name="description" content="A parallel-jaw gripper actuated by a rack and pinion, driven by a Maxon motor and planetary gearbox through an EPOS4 controller. Designed in Onshape.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Rack-and-Pinion Parallel Gripper">
+  <meta property="og:description" content="A parallel-jaw gripper actuated by a rack and pinion, driven by a Maxon motor and planetary gearbox through an EPOS4 controller. Designed in Onshape.">
+  <meta property="og:image" content="https://justaclack3r.github.io/assets/img/rap-gripper/bench.webp">
+  <meta property="og:url" content="https://justaclack3r.github.io/projects/rap-gripper.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+</head>
+<body data-page="project" data-root="../" data-slug="rap-gripper">
+
+<main id="main">
+  <div class="wrap proj-top">
+    <nav class="crumbs" data-crumbs aria-label="Breadcrumb"></nav>
+    <h1 class="proj-title">Rack-and-Pinion Parallel Gripper</h1>
+    <p class="proj-sub">A parallel-jaw gripper actuated by a rack and pinion, driven by a Maxon motor and planetary gearbox through an EPOS4 controller. Designed in Onshape.</p>
+    <div data-titleblock></div>
+
+    <figure class="proj-hero hero-pair"><div class="hp "><img src="../assets/img/rap-gripper/bench-sm.webp" srcset="../assets/img/rap-gripper/bench-sm.webp 900w, ../assets/img/rap-gripper/bench.webp 2000w" sizes="(max-width: 1240px) 50vw, 580px" width="675" height="900" alt="The built gripper on a workbench." fetchpriority="high" decoding="async"></div><div class="hp contain"><img src="../assets/img/rap-gripper/onshape-sm.webp" srcset="../assets/img/rap-gripper/onshape-sm.webp 900w, ../assets/img/rap-gripper/onshape.webp 2000w" sizes="(max-width: 1240px) 50vw, 580px" width="740" height="900" alt="Top view of the gripper in Onshape." fetchpriority="high" decoding="async"></div></figure>
+    <div class="keystats"><div class="keystat"><b>Parallel</b><span>Jaw motion</span></div><div class="keystat"><b>Rack &amp; pinion</b><span>Actuation</span></div><div class="keystat"><b>Onshape</b><span>Designed in</span></div><div class="keystat"><b>18 V drill</b><span>Grip test object</span></div></div>
+    <div class="proj-layout">
+      <aside class="toc" data-toc aria-label="On this page"></aside>
+      <article class="prose">
+<!-- ===== WRITE-UP START ===== -->
+
+<h2 id="design">Design</h2>
+<p>A parallel-jaw gripper keeps its fingers parallel through the whole stroke, which makes contact predictable on boxes, tools and anything else with flat faces. In this design a <strong>pinion</strong> on the gearmotor output drives <strong>racks</strong> attached to the jaws, and the jaws slide on guide rods. A rack and pinion turns rotation into linear jaw travel at a constant ratio, so jaw force follows directly from motor torque and gearing, with no linkage geometry in between.</p>
+<p>The drive is a Maxon motor with a planetary gearbox, run by a Maxon EPOS4 controller. The EPOS4 closes current, velocity and position loops on the motor, so the gripper can be sent to a position or run with a current limit. Since torque is proportional to current, <strong>the current limit directly caps grip force</strong>.</p>
+<figure class="fig narrow-c frame"><img src="../assets/img/rap-gripper/onshape-sm.webp" srcset="../assets/img/rap-gripper/onshape-sm.webp 900w, ../assets/img/rap-gripper/onshape.webp 2000w" sizes="(max-width: 820px) 100vw, 760px" width="740" height="900" alt="Top-down CAD view of a blue gripper body with two jaws, steel guide rods and yellow end blocks." loading="lazy" decoding="async"><figcaption>Top view of the Onshape assembly: jaws, guide rods and the central drive.</figcaption></figure>
+
+<h2 id="testing">Grip test</h2>
+<div class="media-pair "><div><figure class="fig portrait-v"><video class="clip" data-src="../assets/video/rap-gripper-drill.mp4" poster="../assets/video/rap-gripper-drill-poster.jpg" width="540" height="960" preload="none" muted loop playsinline aria-label="The gripper clamping the handle of a green cordless drill while it is lifted and tilted."></video><figcaption>Grip test: holding an 18 V cordless drill with its battery.</figcaption></figure></div><div><p>For the first full test I chose a deliberately awkward object: a cordless drill. It's heavy, top-heavy and irregular, and the gripper holds it securely while the gripper is lifted and tilted by hand.</p></div></div>
+<div class="gallery c2 "><figure class="fig"><img src="../assets/img/rap-gripper/bench-sm.webp" width="675" height="900" alt="The white 3D-printed gripper on a desk with cables and a circuit board on top, a laptop behind." loading="lazy" decoding="async"><figcaption>The built gripper on the bench with the motor and controller wiring.</figcaption></figure><figure class="fig"><img src="../assets/img/rap-gripper/top-sm.webp" width="675" height="900" alt="Top-down photo of the white gripper with its jaws, steel guide rods and wiring." loading="lazy" decoding="async"><figcaption>Top view of the built gripper.</figcaption></figure></div>
+
+<!-- ===== WRITE-UP END ===== -->
+        <section class="proj-revisions" data-revisions aria-label="Revision history"></section>
+      </article>
+    </div>
+
+    <section class="related-wrap" aria-labelledby="related-title">
+      <h2 id="related-title" class="related-title">More in this category</h2>
+      <div class="related" data-related></div>
+    </section>
+    <nav data-pn aria-label="Previous and next project"></nav>
+  </div>
+</main>
+
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/site.js"></script>
+</body>
+</html>

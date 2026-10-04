@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>800 lbf Liquid Rocket Test Stand · Justice Hickman-Maynard</title>
+  <meta name="description" content="A vertical static-fire stand for the Harvard Rocket Propulsion Group&#x27;s 800 lbf liquid bipropellant engine: mostly aluminum, with a steel plate for the exhaust, validated in SolidWorks Simulation.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="800 lbf Liquid Rocket Test Stand">
+  <meta property="og:description" content="A vertical static-fire stand for the Harvard Rocket Propulsion Group&#x27;s 800 lbf liquid bipropellant engine: mostly aluminum, with a steel plate for the exhaust, validated in SolidWorks Simulation.">
+  <meta property="og:image" content="https://justaclack3r.github.io/assets/img/rocket-test-stand/render.webp">
+  <meta property="og:url" content="https://justaclack3r.github.io/projects/rocket-test-stand.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+</head>
+<body data-page="project" data-root="../" data-slug="rocket-test-stand">
+
+<main id="main">
+  <div class="wrap proj-top">
+    <nav class="crumbs" data-crumbs aria-label="Breadcrumb"></nav>
+    <h1 class="proj-title">800 lbf Liquid Rocket Test Stand</h1>
+    <p class="proj-sub">A vertical static-fire stand for the Harvard Rocket Propulsion Group's 800 lbf liquid bipropellant engine: mostly aluminum, with a steel plate for the exhaust, validated in SolidWorks Simulation.</p>
+    <div data-titleblock></div>
+
+    <figure class="proj-hero "><img src="../assets/img/rocket-test-stand/render-sm.webp" srcset="../assets/img/rocket-test-stand/render-sm.webp 900w, ../assets/img/rocket-test-stand/render.webp 2000w" sizes="(max-width: 1240px) 100vw, 1160px" width="900" height="675" alt="Render of the tall aluminum test stand on a dark background." fetchpriority="high" decoding="async"></figure>
+    <div class="keystats"><div class="keystat"><b>800 lbf</b><span>Design thrust</span></div><div class="keystat"><b>Vertical</b><span>Static-fire configuration</span></div><div class="keystat"><b>FEA</b><span>Validated structure</span></div></div>
+    <div class="proj-layout">
+      <aside class="toc" data-toc aria-label="On this page"></aside>
+      <article class="prose">
+<!-- ===== WRITE-UP START ===== -->
+
+<h2 id="context">Context</h2>
+<p>The Harvard Rocket Propulsion Group, part of Harvard SEDS, develops liquid bipropellant rocket engines. Liquid engines are static-fired on a test stand long before they fly. The stand has to hold the engine and its plumbing rigidly, carry the full thrust into the ground, and survive the exhaust firing after firing.</p>
+
+<h2 id="design">Design</h2>
+<p>I designed the stand for an engine of <strong>800 lbf</strong> thrust. It is a tall vertical frame built mostly from aluminum to keep it light and easy to work on. The engine sits vertically inside the frame, and <strong>its thrust goes into a mounting plate and down the longerons to the base</strong>. Where the exhaust hits, a steel plate takes the heat and blast that aluminum wouldn't survive.</p>
+<div class="gallery c2 contain"><figure class="fig"><img src="../assets/img/rocket-test-stand/with-rocket-sm.webp" width="315" height="900" alt="Tall narrow CAD model of the test stand with a white rocket inside the frame." loading="lazy" decoding="async"><figcaption>Full model with the vehicle in place.</figcaption></figure><figure class="fig"><img src="../assets/img/rocket-test-stand/field-sm.webp" width="741" height="721" alt="The aluminum test stand standing in a dirt clearing beside a gas cylinder and a red box, with trees behind." loading="lazy" decoding="async"><figcaption>The stand set up at the test site.</figcaption></figure></div>
+
+<h2 id="validation">Validation</h2>
+<p>I validated the frame with a SolidWorks static study on the longeron model, applying the 800 lbf design thrust at the engine mount and checking the factor-of-safety distribution through the structure.</p>
+<figure class="fig frame narrow-c"><img src="../assets/img/rocket-test-stand/fos-sm.webp" srcset="../assets/img/rocket-test-stand/fos-sm.webp 900w, ../assets/img/rocket-test-stand/fos.webp 2000w" sizes="(max-width: 820px) 100vw, 760px" width="900" height="863" alt="SolidWorks factor-of-safety plot of the tall frame, with purple load arrows at mid-height and green fixtures at the base." loading="lazy" decoding="async"><figcaption>Factor-of-safety plot for the 800 lbf thrust case. The purple arrows show the thrust load at the engine mount.</figcaption></figure>
+
+<!-- ===== WRITE-UP END ===== -->
+        <section class="proj-revisions" data-revisions aria-label="Revision history"></section>
+      </article>
+    </div>
+
+    <section class="related-wrap" aria-labelledby="related-title">
+      <h2 id="related-title" class="related-title">More in this category</h2>
+      <div class="related" data-related></div>
+    </section>
+    <nav data-pn aria-label="Previous and next project"></nav>
+  </div>
+</main>
+
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/site.js"></script>
+</body>
+</html>

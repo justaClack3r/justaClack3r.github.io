@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Surface-Profiling Laser Interferometer · Justice Hickman-Maynard</title>
+  <meta name="description" content="For a physics lab final project I built a laser interferometer that measures an object&#x27;s surface gradient as it is dragged across the translating mirror. It works only with very precise alignment.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Surface-Profiling Laser Interferometer">
+  <meta property="og:description" content="For a physics lab final project I built a laser interferometer that measures an object&#x27;s surface gradient as it is dragged across the translating mirror. It works only with very precise alignment.">
+  <meta property="og:image" content="https://justaclack3r.github.io/assets/img/interferometer/fringes-wall.webp">
+  <meta property="og:url" content="https://justaclack3r.github.io/projects/interferometer.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+</head>
+<body data-page="project" data-root="../" data-slug="interferometer">
+
+<main id="main">
+  <div class="wrap proj-top">
+    <nav class="crumbs" data-crumbs aria-label="Breadcrumb"></nav>
+    <h1 class="proj-title">Surface-Profiling Laser Interferometer</h1>
+    <p class="proj-sub">For a physics lab final project I built a laser interferometer that measures an object's surface gradient as it is dragged across the translating mirror. It works only with very precise alignment.</p>
+    <div data-titleblock></div>
+
+    <figure class="proj-hero hero-pair"><div class="hp "><img src="../assets/img/interferometer/setup-sm.webp" srcset="../assets/img/interferometer/setup-sm.webp 900w, ../assets/img/interferometer/setup.webp 2000w" sizes="(max-width: 1240px) 50vw, 580px" width="675" height="900" alt="The interferometer on an optical breadboard in the lab." fetchpriority="high" decoding="async"></div><div class="hp "><img src="../assets/img/interferometer/fringes-camera-sm.webp" srcset="../assets/img/interferometer/fringes-camera-sm.webp 900w, ../assets/img/interferometer/fringes-camera.webp 2000w" sizes="(max-width: 1240px) 50vw, 580px" width="900" height="638" alt="Interference fringes on the camera." fetchpriority="high" decoding="async"></div></figure>
+    <div class="keystats"><div class="keystat"><b>λ/2</b><span>Mirror travel per fringe</span></div><div class="keystat"><b>Michelson</b><span>Interferometer type</span></div><div class="keystat"><b>Sub-µm</b><span>Height sensitivity</span></div></div>
+    <div class="proj-layout">
+      <aside class="toc" data-toc aria-label="On this page"></aside>
+      <article class="prose">
+<!-- ===== WRITE-UP START ===== -->
+
+<h2 id="principle">Principle</h2>
+<p>A Michelson interferometer splits one laser beam into two arms, reflects each off a mirror and recombines them. The brightness at the output depends on the difference in path length between the arms. Moving one mirror by just <strong>half a wavelength</strong> shifts the pattern by a full fringe, a few hundred nanometers for visible light.</p>
+
+<h2 id="measurement">Measuring a surface</h2>
+<p>This build turns that sensitivity into a <strong>surface profiler</strong>. The object being measured is dragged across the <strong>translating mirror</strong>, so changes in surface height become changes in the mirror's position and therefore in path length. As the surface rises and falls, fringes move across the detector. Counting them, and tracking how quickly they pass, gives the object's <strong>surface gradient</strong> along the scan at very fine resolution.</p>
+
+<h2 id="alignment">Alignment</h2>
+<p>The hard part is <strong>alignment</strong>. The two returning beams must overlap almost perfectly in both position and angle, or the fringes wash out or become too fine to resolve. The setup is built on an optical breadboard with kinematic mirror mounts, and the fringes are imaged on a Thorlabs camera so they can be recorded and analyzed.</p>
+<div class="gallery c3 tall"><figure class="fig"><img src="../assets/img/interferometer/top-sm.webp" width="675" height="900" alt="Top-down view of an optical breadboard with a laser, beam splitter and mirror mounts." loading="lazy" decoding="async"><figcaption>Top view of the optical layout.</figcaption></figure><figure class="fig"><img src="../assets/img/interferometer/side-sm.webp" width="675" height="900" alt="Side view of the breadboard with mirrors on posts and a white screen." loading="lazy" decoding="async"><figcaption>Mirror mounts and beam path.</figcaption></figure><figure class="fig"><img src="../assets/img/interferometer/fringes-wall-sm.webp" width="675" height="900" alt="A green patch of striped interference fringes on a white wall." loading="lazy" decoding="async"><figcaption>Fringes projected on the wall.</figcaption></figure></div>
+<figure class="fig "><img src="../assets/img/interferometer/fringes-camera-sm.webp" srcset="../assets/img/interferometer/fringes-camera-sm.webp 900w, ../assets/img/interferometer/fringes-camera.webp 2000w" sizes="(max-width: 820px) 100vw, 760px" width="900" height="638" alt="Close-up of bright green and dark diagonal interference fringes." loading="lazy" decoding="async"><figcaption>Fringes captured on the Thorlabs camera.</figcaption></figure>
+
+<!-- ===== WRITE-UP END ===== -->
+        <section class="proj-revisions" data-revisions aria-label="Revision history"></section>
+      </article>
+    </div>
+
+    <section class="related-wrap" aria-labelledby="related-title">
+      <h2 id="related-title" class="related-title">More in this category</h2>
+      <div class="related" data-related></div>
+    </section>
+    <nav data-pn aria-label="Previous and next project"></nav>
+  </div>
+</main>
+
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/site.js"></script>
+</body>
+</html>

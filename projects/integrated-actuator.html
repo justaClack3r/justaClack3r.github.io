@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Integrated Robot Actuator · Justice Hickman-Maynard</title>
+  <meta name="description" content="A self-contained joint module: frameless inrunner BLDC, strain-wave gearbox, dual encoders and an on-board position-controlled driver in one aluminum housing, with its thermal and structural behavior validated in Ansys Mechanical.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Integrated Robot Actuator">
+  <meta property="og:description" content="A self-contained joint module: frameless inrunner BLDC, strain-wave gearbox, dual encoders and an on-board position-controlled driver in one aluminum housing, with its thermal and structural behavior validated in Ansys Mechanical.">
+  <meta property="og:image" content="https://justaclack3r.github.io/assets/img/integrated-actuator/section-a.webp">
+  <meta property="og:url" content="https://justaclack3r.github.io/projects/integrated-actuator.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+</head>
+<body data-page="project" data-root="../" data-slug="integrated-actuator">
+
+<main id="main">
+  <div class="wrap proj-top">
+    <nav class="crumbs" data-crumbs aria-label="Breadcrumb"></nav>
+    <h1 class="proj-title">Integrated Robot Actuator</h1>
+    <p class="proj-sub">A self-contained joint module: frameless inrunner BLDC, strain-wave gearbox, dual encoders and an on-board position-controlled driver in one aluminum housing, with its thermal and structural behavior validated in Ansys Mechanical.</p>
+    <div data-titleblock></div>
+
+    <figure class="proj-hero contain"><img src="../assets/img/integrated-actuator/section-a-sm.webp" srcset="../assets/img/integrated-actuator/section-a-sm.webp 900w, ../assets/img/integrated-actuator/section-a.webp 2000w" sizes="(max-width: 1240px) 100vw, 1160px" width="900" height="762" alt="Colored CAD section view of the integrated actuator." fetchpriority="high" decoding="async"></figure>
+    <div class="keystats"><div class="keystat"><b>Frameless</b><span>Inrunner BLDC</span></div><div class="keystat"><b>Strain-wave</b><span>Near-zero-backlash reduction</span></div><div class="keystat"><b>2</b><span>Encoders: motor + output</span></div><div class="keystat"><b>35–37 °C</b><span>Simulated temperature band</span></div></div>
+    <div class="proj-layout">
+      <aside class="toc" data-toc aria-label="On this page"></aside>
+      <article class="prose">
+<!-- ===== WRITE-UP START ===== -->
+
+<p class="lede">Every arm I've built so far was limited by its actuators: affordable motors bolted to separate gearboxes, with backlash, mass and wiring to work around. This project is the module I wish I'd had, a <strong>compact, high-torque joint</strong> that combines motor, reduction, sensing and drive electronics so it can drop into a robot as a complete joint.</p>
+
+<h2 id="architecture">Architecture</h2>
+<figure class="fig frame"><img src="../assets/img/integrated-actuator/section-a-sm.webp" srcset="../assets/img/integrated-actuator/section-a-sm.webp 900w, ../assets/img/integrated-actuator/section-a.webp 2000w" sizes="(max-width: 820px) 100vw, 760px" width="900" height="762" alt="Colored CAD section of a cylindrical actuator showing circuit boards at the left end, the shaft, the motor stator inside a finned housing, the gear stage and the output flange at the right end." loading="lazy" decoding="async"><figcaption>Section view through the actuator: encoder and driver electronics at left, output flange at right, finned housing around the motor.</figcaption></figure>
+<ul>
+  <li><strong>A motor built into the structure.</strong> The motor is a frameless inrunner BLDC. A frameless motor is just a stator and a rotor, with no housing or bearings of its own. The rotor mounts directly to the actuator's shaft and the stator seats in the housing, which removes a redundant structure and a coupling and makes the module shorter and lighter.</li>
+  <li><strong>Near-zero-backlash reduction.</strong> The gearbox is a strain-wave drive: an elliptical wave generator flexes a thin toothed flexspline inside a rigid circular spline, giving a high reduction in a single compact stage with near-zero backlash.</li>
+  <li><strong>Sensing on both sides of the gearbox.</strong> One encoder on the motor side for commutation and velocity, one on the output for true joint position. With both, the controller can see what happens <em>across</em> the gearbox: wind-up, compliance and lost motion. My <a href="bamf.html">BAMF</a> test rig relied on the same two-sided view to identify backlash.</li>
+  <li><strong>On-board position control.</strong> The motor driver lives inside the module, so the joint needs only power and commands and closes its own position loop. Integration into a robot becomes mostly mechanical.</li>
+  <li><strong>Structure that doubles as a heat path.</strong> Using aluminum for most of the structure keeps the module light and stiff and gives the motor's heat a path out. The result is high torque density and low weight for the torque it delivers.</li>
+</ul>
+<div class="gallery c3 "><figure class="fig"><img src="../assets/img/integrated-actuator/section-b-sm.webp" width="900" height="810" alt="Earlier colored CAD section of the actuator with circuit boards stacked at the left end and a smooth housing." loading="lazy" decoding="async"><figcaption>An earlier layout iteration (September 2026), before the finned housing.</figcaption></figure><figure class="fig"><img src="../assets/img/integrated-actuator/iso-output-sm.webp" width="900" height="776" alt="Gray CAD model of the actuator&#x27;s output face with a ring of bolt holes and cooling fins." loading="lazy" decoding="async"><figcaption>Output end: bolt-circle flange for mounting the next link.</figcaption></figure><figure class="fig"><img src="../assets/img/integrated-actuator/iso-shell-sm.webp" width="900" height="763" alt="Gray CAD model of the closed cylindrical actuator housing." loading="lazy" decoding="async"><figcaption>The closed module.</figcaption></figure></div>
+
+<h2 id="simulation">Thermal &amp; structural simulation</h2>
+<p>I validated the design in Ansys Mechanical with a <strong>coupled thermal–structural workflow</strong>. A <strong>steady-state thermal</strong> study solves for the temperature field the motor's heat produces, and that field is then <strong>imported as a load into a static structural study</strong>. The structural results therefore include thermal expansion along with the mechanical loads on the output.</p>
+<p>In the analyzed case, the entire module stays within a narrow band of <strong>35.0–36.9 °C</strong>, peaking at the sensor-side stator mount. The aluminum structure keeps the temperature nearly uniform, so there are no hot spots for the electronics or bearings to sit next to.</p>
+<figure class="fig "><img src="../assets/img/integrated-actuator/ansys-thermal-sm.webp" srcset="../assets/img/integrated-actuator/ansys-thermal-sm.webp 900w, ../assets/img/integrated-actuator/ansys-thermal.webp 2000w" sizes="(max-width: 820px) 100vw, 760px" width="900" height="391" alt="Ansys temperature contour on the actuator and its mounting bracket, shading from red at the motor to blue at the bracket." loading="lazy" decoding="async"><figcaption>Steady-state thermal result: 35.0–36.9 °C across the module.</figcaption></figure>
+<figure class="fig "><img src="../assets/img/integrated-actuator/ansys-structural-sm.webp" srcset="../assets/img/integrated-actuator/ansys-structural-sm.webp 900w, ../assets/img/integrated-actuator/ansys-structural.webp 2000w" sizes="(max-width: 820px) 100vw, 760px" width="900" height="391" alt="Ansys structural result contour on the actuator and mounting bracket." loading="lazy" decoding="async"><figcaption>Static structural study with the thermal field applied as an imported load.</figcaption></figure>
+
+<h2 id="status">Status</h2>
+<p>The actuator is in active development this semester. Prototype builds and bench results will appear in the revision table below as they happen.</p>
+
+<!-- ===== WRITE-UP END ===== -->
+        <section class="proj-revisions" data-revisions aria-label="Revision history"></section>
+      </article>
+    </div>
+
+    <section class="related-wrap" aria-labelledby="related-title">
+      <h2 id="related-title" class="related-title">More in this category</h2>
+      <div class="related" data-related></div>
+    </section>
+    <nav data-pn aria-label="Previous and next project"></nav>
+  </div>
+</main>
+
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/site.js"></script>
+</body>
+</html>

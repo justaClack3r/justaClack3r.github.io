@@ -1,0 +1,9 @@
+# Raw source media (544 MB of originals, firmware, reports).
+# The site only uses the optimized copies in assets/.
+Portfolio_files/
+
+# OS / editor clutter
+.DS_Store
+Thumbs.db
+desktop.ini
+__pycache__/
