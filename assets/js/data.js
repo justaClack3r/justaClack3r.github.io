@@ -244,7 +244,7 @@ window.PORTFOLIO = {
       season: "Summer 2025", sort: "2025-07",
       own: "solo", role: "Sole designer",
       team: "Harvard Microrobotics Lab",
-      tools: "SolidWorks · Laser cutting",
+      tools: "Fusion 360 · Laser cutting",
       status: "Complete",
       cover: "assets/img/dea-spray-gantry/enclosure-sm.webp",
       tags: ["Lab automation", "Vacuum fixturing", "Enclosure"],
